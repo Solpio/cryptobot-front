@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import { fetchGifts } from "../../shared/gifts/redux/gifts.slice.ts";
-import { useAppDispatch, useAppSelector } from "../../redux/helpers.ts";
+import { useAppSelector } from "../../redux/helpers.ts";
 
 import styles from "./Store.module.scss";
 
@@ -8,16 +6,10 @@ import giftSVG from "../../static/icons/gift.svg";
 import StoreMenu from "../../shared/components/StoreMenu";
 
 const PageStore = () => {
-	const dispatch = useAppDispatch();
-
 	const { gifts } = useAppSelector((state) => ({
 		gifts: state.gifts.data,
 	}));
 
-	console.log("daata", gifts);
-	useEffect(() => {
-		dispatch(fetchGifts());
-	}, []);
 	return (
 		<div>
 			<div className={styles.PageDescription}>

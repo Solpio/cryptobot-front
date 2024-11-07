@@ -20,7 +20,8 @@ const Card = ({
 		goToAndStop(0, true);
 		play();
 	};
-	console.log(backgroundColor);
+	goToAndStop(0, true);
+	play();
 	return (
 		<div
 			onClick={handleOnClick}

@@ -9,14 +9,20 @@ import PageProfile from "./pages/profile";
 import PageGifts from "./pages/gifts";
 import PageLeaderboard from "./pages/leaderboard";
 import BuyGiftPage from "./pages/buyGift";
+import { useAppDispatch } from "./redux/helpers.ts";
+import { fetchGifts } from "./shared/gifts/redux/gifts.slice.ts";
 
 function App() {
 	const { tg, theme, mainButton } = useTelegram();
-
+	const dispatch = useAppDispatch();
 	useEffect(() => {
 		tg.ready();
 		mainButton.text = "123";
 	}, [tg]);
+
+	useEffect(() => {
+		dispatch(fetchGifts());
+	}, []);
 
 	console.log(theme);
 	return (
