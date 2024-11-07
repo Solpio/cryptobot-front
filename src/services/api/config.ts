@@ -3,7 +3,7 @@ export const config = {
 		baseURL:
 			import.meta.env.VITE_MODE === "LOCAL"
 				? "http://localhost:8080"
-				: `https://${import.meta.env.VITE_BASE_URL}/api/`,
+				: `${import.meta.env.VITE_BASE_URL}`,
 		timeout: 25000,
 		headers: {
 			// @ts-ignore
