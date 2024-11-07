@@ -4,6 +4,7 @@ import { GiftDTO } from "../../gifts/dto/gift.dto.ts";
 import styles from "./StoreMenu.module.scss";
 import Button from "../Button";
 import { useTelegram } from "../../../telegramAPI/hooks/useTelegram.ts";
+import { NavLink } from "react-router-dom";
 
 interface StoreMenuProps {
 	gifts: GiftDTO[];
@@ -11,7 +12,6 @@ interface StoreMenuProps {
 
 const StoreMenu = ({ gifts }: StoreMenuProps) => {
 	const { colorScheme } = useTelegram();
-	console.log(gifts);
 	return (
 		<div className={styles.StoreMenuContainer}>
 			{gifts.map((gift) => (
@@ -22,9 +22,11 @@ const StoreMenu = ({ gifts }: StoreMenuProps) => {
 						colorScheme === "dark" ? gift.backgroundDark : gift.backgroundLight
 					}
 					actionButton={
-						<Button>
-							{gift.price} {gift.currency}
-						</Button>
+						<NavLink to={`gift/${gift.id}`}>
+							<Button>
+								{gift.price} {gift.currency}
+							</Button>
+						</NavLink>
 					}
 				/>
 			))}

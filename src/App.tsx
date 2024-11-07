@@ -8,9 +8,10 @@ import PageStore from "./pages/store";
 import PageProfile from "./pages/profile";
 import PageGifts from "./pages/gifts";
 import PageLeaderboard from "./pages/leaderboard";
+import BuyGiftPage from "./pages/buyGift";
 
 function App() {
-	const { tg, theme, onClose, onToggleButton, mainButton } = useTelegram();
+	const { tg, theme, mainButton } = useTelegram();
 
 	useEffect(() => {
 		tg.ready();
@@ -26,6 +27,7 @@ function App() {
 					<Route path={"profile"} element={<PageProfile />} />
 					<Route path={"gifts"} element={<PageGifts />} />
 					<Route path={"leaderboard"} element={<PageLeaderboard />} />
+					<Route path={"gift/:id"} element={<BuyGiftPage />} />
 				</Route>
 			</Routes>
 		</>
