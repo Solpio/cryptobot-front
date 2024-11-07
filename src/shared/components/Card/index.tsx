@@ -1,25 +1,46 @@
-import React from "react";
-
-interface CardProps {
-	title: string;
-	icon: React.ReactNode;
-	backgroundColor?: string;
-	size?: "small" | "medium" | "large";
-	actionButton?: React.ReactNode;
-}
+import classNames from "classnames";
+import styles from "./Card.module.scss";
+import { CardProps, CardSizeEnum } from "./Card.interface.ts";
+import { useLottie } from "lottie-react";
 
 const Card = ({
-	icon,
 	title,
-	size = "medium",
+	size = CardSizeEnum.medium,
 	actionButton,
 	backgroundColor,
+	animationData,
 }: CardProps) => {
+	const options = {
+		animationData: JSON.parse(animationData),
+		loop: false,
+		autoplay: false,
+	};
+	const { View, play, goToAndStop } = useLottie(options);
+	const handleOnClick = () => {
+		goToAndStop(0, true);
+		play();
+	};
+	console.log(backgroundColor);
 	return (
-		<div>
-			<h2>{title}</h2>
-			<div>{icon}</div>
-			{actionButton}
+		<div
+			onClick={handleOnClick}
+			className={styles.Card}
+			style={{
+				background: backgroundColor,
+			}}
+		>
+			<div className={styles.CardWrapper}>
+				<h2>{title}</h2>
+				<div
+					className={classNames(
+						styles.Icon,
+						size === CardSizeEnum.small && styles.IconSmall
+					)}
+				>
+					{View}
+				</div>
+				{actionButton}
+			</div>
 		</div>
 	);
 };

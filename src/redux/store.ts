@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import giftsReducer from "../shared/gifts/store/gifts.slice.ts";
+import giftsReducer from "../shared/gifts/redux/gifts.slice.ts";
 
 export const store = configureStore({
 	reducer: {

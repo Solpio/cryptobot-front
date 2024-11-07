@@ -1,4 +1,4 @@
 import { get } from "../../../services/api";
-import { Gift } from "../dto/gift.dto.ts";
+import { GiftDTO } from "../dto/gift.dto.ts";
 
-export const getGifts = () => get<Gift[]>("gifts", {});
+export const getGifts = () => get<GiftDTO[]>("gifts", {});
