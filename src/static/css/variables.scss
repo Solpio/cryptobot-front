@@ -1,0 +1,33 @@
+@use "colors" as *;
+
+$dark-theme: (
+        --text-primary: $white,
+        --label-secondary: $label_secondary,
+        --tab-bar-label: $label_tab_bar,
+        --link-color: $accent_blue,
+        --link-active: $accent_blue,
+        --bg-primary: #1C1C1E,
+        --bg-notification: rgba(0, 0, 0, 0.8),
+        --bg-button-primary: $accent_blue,
+        --bg-tab-bar: rgba(30, 30, 30, 0.75),
+        --tab-menu-separator: $tab_menu_separator,
+
+
+        --tg-theme-header-bg-color: rgba(230, 10, 10, 0.75)
+);
+
+$light-theme: (
+        --text-primary: $black,
+        --label-secondary: $label_secondary,
+        --tab-bar-label: $label_tab_bar,
+        --link-color: $accent_blue,
+        --link-active: $accent_blue,
+        --bg-primary: $white,
+        --bg-notification: rgba(45, 45, 45, 0.8),
+        --bg-button-primary: $accent_blue,
+        --bg-tab-bar: rgba(241, 241, 242, 0.75),
+        --tab-menu-separator: $tab_menu_separator,
+
+        --tg-theme-header-bg-color: rgba(230, 16, 16, 0.75)
+
+);

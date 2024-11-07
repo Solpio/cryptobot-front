@@ -1,0 +1,99 @@
+@use "colors" as *;
+@use "variables" as *;
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 400;
+  src: url('../fonts/SF_Pro/SF-Pro-Text-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 500;
+  src: url('../fonts/SF_Pro/SF-Pro-Text-Medium.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-weight: 600;
+  src: url('../fonts/SF_Pro/SF-Pro-Text-Semibold.ttf') format('truetype');
+}
+
+@mixin text-bold {
+  font-weight: 500;
+}
+
+@mixin text-caption {
+  font-weight: 400;
+  line-height: 1.8rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.08px;
+}
+
+@mixin theme-vars($theme) {
+  @each $key, $value in $theme {
+    #{$key}: #{$value};
+  }
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  font-size: 1.7rem;
+}
+
+:root {
+  @include theme-vars($light-theme);
+  font-family: "SF Pro Text", sans-serif;
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 2.2rem;
+  min-height: 100%;
+
+
+  &[style*="--tg-color-scheme: dark"] {
+    @include theme-vars($dark-theme);
+  }
+}
+
+h1 {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  letter-spacing: -0.43px;
+  text-align: center;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.7rem;
+  text-align: center;
+  letter-spacing: -0.43px;
+  font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  color: var(--label-secondary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-active {
+  color: var(--link-active);
+}
+
+button {
+  border: none;
+}
