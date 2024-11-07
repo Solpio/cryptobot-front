@@ -30,15 +30,15 @@ const Card = ({
 			}}
 		>
 			<div className={styles.CardWrapper}>
-				<h2>{title}</h2>
 				<div
 					className={classNames(
 						styles.Icon,
-						size === CardSizeEnum.small && styles.IconSmall
+						size === CardSizeEnum.medium && styles.IconMedium
 					)}
 				>
 					{View}
 				</div>
+				<h2>{title}</h2>
 				{actionButton}
 			</div>
 		</div>

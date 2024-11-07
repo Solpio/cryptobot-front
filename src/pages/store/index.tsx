@@ -1,8 +1,10 @@
-import Button from "../../shared/components/Button";
 import { useEffect } from "react";
 import { fetchGifts } from "../../shared/gifts/redux/gifts.slice.ts";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers.ts";
 
+import styles from "./Store.module.scss";
+
+import giftSVG from "../../static/icons/gift.svg";
 import StoreMenu from "../../shared/components/StoreMenu";
 
 const PageStore = () => {
@@ -18,9 +20,11 @@ const PageStore = () => {
 	}, []);
 	return (
 		<div>
-			<h1>Buy and Send Gifts</h1>
-			<label>Unique gifts for everyone by Crypto Pay.</label>
-			<Button>10 USDT</Button>
+			<div className={styles.PageDescription}>
+				<img className={styles.PageDescriptionIcon} src={giftSVG} alt="Gift" />
+				<h1>Buy and Send Gifts</h1>
+				<label>Unique gifts for everyone by Crypto Pay.</label>
+			</div>
 			<StoreMenu gifts={gifts} />
 			{/*{gifts.map((gift) => (*/}
 			{/*	<Card*/}

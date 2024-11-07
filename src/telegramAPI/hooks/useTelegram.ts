@@ -31,5 +31,6 @@ export function useTelegram() {
 		backButton: tg.BackButton,
 		secondaryButton: tg.SecondaryButton,
 		requestContact: tg.requestContact,
+		colorScheme: tg.colorScheme,
 	};
 }

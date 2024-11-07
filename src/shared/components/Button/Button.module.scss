@@ -3,8 +3,9 @@
   box-sizing: border-box;
   padding: 6px 16px 6px 12px;
   background-color: var(--bg-button-primary);
-  color: var(--bg-button-primary-text);
+  color: var(--text-primary-button);
   border-radius: 100px;
+  cursor: pointer;
 }
 
 .ButtonWrapper {
