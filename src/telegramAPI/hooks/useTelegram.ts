@@ -32,5 +32,6 @@ export function useTelegram() {
 		secondaryButton: tg.SecondaryButton,
 		requestContact: tg.requestContact,
 		colorScheme: tg.colorScheme,
+		switchInlineQuery: tg.switchInlineQuery,
 	};
 }

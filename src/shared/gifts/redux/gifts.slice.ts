@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GiftDTO } from "../dto/gift.dto.ts";
+import { Gift } from "../dto/gift.ts";
 import { getGifts } from "../data";
 
 interface GiftsState {
-	data: GiftDTO[];
+	data: Gift[];
 	loading: "pending" | "succeeded" | "failed";
 }
 

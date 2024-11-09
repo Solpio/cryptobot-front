@@ -1,15 +1,19 @@
 import { useAppSelector } from "../../redux/helpers.ts";
 
-import styles from "./Store.module.scss";
+import styles from "./StorePage.module.scss";
 
 import giftSVG from "../../static/icons/gift.svg";
 import StoreMenu from "../../shared/components/StoreMenu";
+import { useTelegram } from "../../telegramAPI/hooks/useTelegram.ts";
 
 const PageStore = () => {
 	const { gifts } = useAppSelector((state) => ({
 		gifts: state.gifts.data,
 	}));
 
+	const { mainButton, onToggleButton } = useTelegram();
+
+	mainButton.text = "Buy a gift";
 	return (
 		<div>
 			<div className={styles.PageDescription}>
@@ -17,31 +21,7 @@ const PageStore = () => {
 				<h1>Buy and Send Gifts</h1>
 				<label>Unique gifts for everyone by Crypto Pay.</label>
 			</div>
-			<StoreMenu gifts={gifts} />
-			{/*{gifts.map((gift) => (*/}
-			{/*	<Card*/}
-			{/*		title={gift.name}*/}
-			{/*		key={gift.id}*/}
-			{/*		animationData={JSON.stringify(gift.lottie)}*/}
-			{/*		backgroundColor={*/}
-			{/*			"linear-gradient(180deg, rgba(254, 159, 65, 0.2) 0%, rgba(254, 159, 65, 0.2) 100%)"*/}
-			{/*		}*/}
-			{/*	/>*/}
-			{/*))}*/}
-			{/*<Card*/}
-			{/*	title={"Delicious Cake"}*/}
-			{/*	backgroundColor={*/}
-			{/*		"linear-gradient(180deg, rgba(254, 159, 65, 0.2) 0%, rgba(254, 159, 65, 0.2) 100%)"*/}
-			{/*	}*/}
-			{/*	animationData={JSON.stringify(testSvg)}*/}
-			{/*/>*/}
-			{/*<Card*/}
-			{/*	title={"Green Star"}*/}
-			{/*	backgroundColor={*/}
-			{/*		"linear-gradient(180deg, rgba(70, 209, 0, 0.2) 0%, rgba(70, 209, 0, 0.2) 100%)"*/}
-			{/*	}*/}
-			{/*	animationData={JSON.stringify(testSvg)}*/}
-			{/*/>*/}
+			<StoreMenu onClickActionButton={onToggleButton} gifts={gifts} />
 		</div>
 	);
 };
