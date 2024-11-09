@@ -1,5 +1,5 @@
 import Card from "../Card";
-import { GiftDTO } from "../../gifts/dto/gift.dto.ts";
+import { Gift } from "../../gifts/dto/gift.ts";
 
 import styles from "./StoreMenu.module.scss";
 import Button from "../Button";
@@ -7,10 +7,11 @@ import { useTelegram } from "../../../telegramAPI/hooks/useTelegram.ts";
 import { NavLink } from "react-router-dom";
 
 interface StoreMenuProps {
-	gifts: GiftDTO[];
+	gifts: Gift[];
+	onClickActionButton?: () => void;
 }
 
-const StoreMenu = ({ gifts }: StoreMenuProps) => {
+const StoreMenu = ({ gifts, onClickActionButton }: StoreMenuProps) => {
 	const { colorScheme } = useTelegram();
 	return (
 		<div className={styles.StoreMenuContainer}>
@@ -23,7 +24,7 @@ const StoreMenu = ({ gifts }: StoreMenuProps) => {
 					}
 					actionButton={
 						<NavLink to={`gift/${gift.id}`}>
-							<Button>
+							<Button onClick={onClickActionButton}>
 								{gift.price} {gift.currency}
 							</Button>
 						</NavLink>

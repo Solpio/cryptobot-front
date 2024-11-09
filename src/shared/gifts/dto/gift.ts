@@ -1,4 +1,4 @@
-export interface GiftDTO {
+export interface Gift {
 	id: string;
 	name: string;
 	price: number;

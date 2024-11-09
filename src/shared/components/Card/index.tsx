@@ -22,6 +22,24 @@ const Card = ({
 	};
 	goToAndStop(0, true);
 	play();
+
+	if (size === CardSizeEnum.large) {
+		return (
+			<div
+				onClick={handleOnClick}
+				className={styles.Card}
+				style={{
+					background: backgroundColor,
+				}}
+			>
+				<div className={styles.CardWrapper}>
+					<div className={classNames(styles.Icon, styles.IconLarge)}>
+						{View}
+					</div>
+				</div>
+			</div>
+		);
+	}
 	return (
 		<div
 			onClick={handleOnClick}
