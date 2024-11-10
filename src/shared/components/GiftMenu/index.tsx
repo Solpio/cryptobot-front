@@ -1,4 +1,4 @@
-import { Gift } from "../../gifts/dto/gift.ts";
+import { GiftDto } from "../../gifts/dto/gift.dto.ts";
 import styles from "./GiftMenu.module.scss";
 import Card from "../Card";
 import { NavLink } from "react-router-dom";
@@ -6,7 +6,7 @@ import Button from "../Button";
 import { CardSizeEnum } from "../Card/Card.interface.ts";
 
 interface GiftMenuProps {
-	gifts: Gift[];
+	gifts: GiftDto[];
 }
 
 const GiftMenu = ({ gifts }: GiftMenuProps) => {

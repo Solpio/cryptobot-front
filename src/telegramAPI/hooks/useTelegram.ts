@@ -33,5 +33,6 @@ export function useTelegram() {
 		requestContact: tg.requestContact,
 		colorScheme: tg.colorScheme,
 		switchInlineQuery: tg.switchInlineQuery,
+		openTelegramLink: tg.openTelegramLink,
 	};
 }

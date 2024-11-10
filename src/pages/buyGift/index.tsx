@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../redux/helpers.ts";
 import Card from "../../shared/components/Card";
 import { useTelegram } from "../../telegramAPI/hooks/useTelegram.ts";
@@ -14,16 +14,15 @@ const BuyGiftPage = () => {
 	}));
 
 	const gift = gifts.find((gift) => gift.id === id);
-	const { colorScheme, mainButton } = useTelegram();
-	const navigate = useNavigate();
+	const { colorScheme, mainButton, openTelegramLink } = useTelegram();
 
 	useEffect(() => {
 		mainButton.onClick(() => {
 			if (id) {
 				setLoading(true);
 				buyGift(id)
-					.then(() => {
-						navigate("/");
+					.then((res) => {
+						openTelegramLink(res.miniAppPayUrl);
 						mainButton.hide();
 						setLoading(false);
 					})
