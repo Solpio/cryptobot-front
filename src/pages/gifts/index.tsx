@@ -16,7 +16,7 @@ const PageGifts = () => {
 				</label>
 			</div>
 
-			<GiftMenu gifts={gifts}></GiftMenu>
+			<GiftMenu gifts={gifts} />
 		</div>
 	);
 };

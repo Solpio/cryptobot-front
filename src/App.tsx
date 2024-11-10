@@ -11,7 +11,7 @@ import PageLeaderboard from "./pages/leaderboard";
 import BuyGiftPage from "./pages/buyGift";
 import { useAppDispatch } from "./redux/helpers.ts";
 import { fetchGifts } from "./shared/gifts/redux/gifts.slice.ts";
-import { makeRegister } from "./shared/user/redux/register.slice.ts";
+import { makeRegister } from "./shared/user/redux/user.slice.ts";
 import { IRegisterUserBody } from "./shared/user/data";
 
 function App() {
@@ -45,6 +45,7 @@ function App() {
 					<Route path={"gifts"} element={<PageGifts />} />
 					<Route path={"leaderboard"} element={<PageLeaderboard />} />
 					<Route path={"gift/:id"} element={<BuyGiftPage />} />
+					<Route path={"profile/:id"} element={<PageProfile />} />
 				</Route>
 			</Routes>
 		</>
