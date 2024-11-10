@@ -8,3 +8,6 @@ export const buyGift = (giftId: string) =>
 	post<ReceiptDto>("purchase", {
 		body: { giftId },
 	});
+
+export const receivePurchasedGift = (purchaseId: string) =>
+	post<unknown>(`purchase/${purchaseId}/get`, {});
