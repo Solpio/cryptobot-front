@@ -41,6 +41,7 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		console.log("debug:", queryId.start_param);
 		if (loading === "succeeded" && queryId.start_param) {
 			const params = queryToObject(queryId.start_param);
 			if (params.purchaseId) {
