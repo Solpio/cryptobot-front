@@ -12,9 +12,12 @@ const initialState: GiftsState = {
 	loading: "succeeded",
 };
 
-export const fetchGifts = createAsyncThunk("getHistoryGifts", async () => {
-	return await getHistoryGifts();
-});
+export const fetchGifts = createAsyncThunk(
+	"getHistoryGifts",
+	async (userId: string) => {
+		return await getHistoryGifts(userId);
+	}
+);
 
 const giftsSlice = createSlice({
 	name: "profile",
