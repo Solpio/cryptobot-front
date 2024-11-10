@@ -30,6 +30,9 @@ const BuyGiftPage = () => {
 			// switchInlineQuery(id, ["users"]);
 			mainButton.hide();
 		});
+		return () => {
+			mainButton.onClick = () => {};
+		};
 	}, []);
 
 	useEffect(() => {
