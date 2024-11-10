@@ -2,24 +2,29 @@ import "./static/css/main.scss";
 
 import { useTelegram } from "./telegramAPI/hooks/useTelegram.ts";
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Layout from "./shared/components/Layout";
 import PageStore from "./pages/store";
 import PageProfile from "./pages/profile";
 import PageGifts from "./pages/gifts";
 import PageLeaderboard from "./pages/leaderboard";
 import BuyGiftPage from "./pages/buyGift";
-import { useAppDispatch } from "./redux/helpers.ts";
+import { useAppDispatch, useAppSelector } from "./redux/helpers.ts";
 import { fetchGifts } from "./shared/gifts/redux/gifts.slice.ts";
 import { makeRegister } from "./shared/user/redux/user.slice.ts";
 import { IRegisterUserBody } from "./shared/user/data";
+import { queryToObject } from "./shared/helpers/queryToObject.ts";
+import PurchasedGift from "./pages/purchasedGift";
 
 function App() {
-	const { tg, theme, mainButton, user } = useTelegram();
+	const { tg, theme, user, queryId } = useTelegram();
 	const dispatch = useAppDispatch();
+	const { loading } = useAppSelector((selector) => ({
+		loading: selector.user.loading,
+	}));
+	const navigate = useNavigate();
 	useEffect(() => {
 		tg.ready();
-		mainButton.text = "123";
 	}, [tg]);
 
 	const regData: IRegisterUserBody = {
@@ -35,6 +40,18 @@ function App() {
 		dispatch(makeRegister(regData));
 	}, []);
 
+	useEffect(() => {
+		if (loading === "succeeded") {
+			const params = queryToObject(queryId.start_param);
+			if (params.purchaseId) {
+				if (params.sending) {
+					navigate(`/purchased/${params.purchaseId}/get`);
+				}
+				navigate(`/purchased/${params.purchaseId}/view`);
+			}
+		}
+	}, [loading, queryId.start_param]);
+
 	console.log(theme);
 	return (
 		<>
@@ -46,6 +63,14 @@ function App() {
 					<Route path={"leaderboard"} element={<PageLeaderboard />} />
 					<Route path={"gift/:id"} element={<BuyGiftPage />} />
 					<Route path={"profile/:id"} element={<PageProfile />} />
+					<Route
+						path={"purchased/:id/get"}
+						element={<PurchasedGift received={false} />}
+					/>
+					<Route
+						path={"purchased/:id/view"}
+						element={<PurchasedGift received />}
+					/>
 				</Route>
 			</Routes>
 		</>
