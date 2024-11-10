@@ -17,7 +17,7 @@ const PageStore = () => {
 	return (
 		<div>
 			<div className={styles.PageDescription}>
-				<img className={styles.PageDescriptionIcon} src={giftSVG} alt="Gift" />
+				<img className={styles.PageDescriptionIcon} src={giftSVG} alt="Users" />
 				<h1>Buy and Send Gifts</h1>
 				<label>Unique gifts for everyone by Crypto Pay.</label>
 			</div>

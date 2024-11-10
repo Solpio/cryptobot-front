@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.innerWrapper {
+  width: 100%;
+  display: flex;
+}
+
+.contentWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
