@@ -1,5 +1,5 @@
 import Card from "../Card";
-import { Gift } from "../../gifts/dto/gift.ts";
+import { GiftDto } from "../../gifts/dto/gift.dto.ts";
 
 import styles from "./StoreMenu.module.scss";
 import Button from "../Button";
@@ -7,7 +7,7 @@ import { useTelegram } from "../../../telegramAPI/hooks/useTelegram.ts";
 import { NavLink } from "react-router-dom";
 
 interface StoreMenuProps {
-	gifts: Gift[];
+	gifts: GiftDto[];
 	onClickActionButton?: () => void;
 }
 

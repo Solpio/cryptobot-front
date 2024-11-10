@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GiftDto } from "../dto/gift.dto.ts";
-import { getGifts } from "../data";
+import { Gift } from "../dto/gift.ts";
+import { getHistoryGifts } from "../data";
 
 interface GiftsState {
-	data: GiftDto[];
+	data: Gift[];
 	loading: "pending" | "succeeded" | "failed";
 }
 
@@ -12,12 +12,15 @@ const initialState: GiftsState = {
 	loading: "succeeded",
 };
 
-export const fetchGifts = createAsyncThunk("gifts", async () => {
-	return await getGifts();
-});
+export const fetchGifts = createAsyncThunk(
+	"getHistoryGifts",
+	async (userId: string) => {
+		return await getHistoryGifts(userId);
+	}
+);
 
 const giftsSlice = createSlice({
-	name: "gifts",
+	name: "profile",
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {

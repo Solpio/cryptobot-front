@@ -1,5 +1,5 @@
 import ProfileHeader from "./ProfileHeader";
-import { Gift } from "../../gifts/dto/gift.ts";
+import { GiftDto } from "../../gifts/dto/gift.dto.ts";
 import GiftMenu from "../GiftMenu";
 
 interface ProfileProps {
@@ -9,7 +9,7 @@ interface ProfileProps {
 	showSettings: boolean;
 	photoUrl?: string;
 
-	userGifts: Gift[];
+	userGifts: GiftDto[];
 }
 
 const Profile = ({
