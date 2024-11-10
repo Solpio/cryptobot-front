@@ -21,22 +21,29 @@ const BuyGiftPage = () => {
 		mainButton.onClick(() => {
 			if (id) {
 				setLoading(true);
-				buyGift(id).then(() => {
-					navigate("/");
-					mainButton.hide();
-					setLoading(false);
-				});
+				buyGift(id)
+					.then(() => {
+						navigate("/");
+						mainButton.hide();
+						setLoading(false);
+					})
+					.catch(() => {
+						mainButton.show();
+					});
 			}
+
 			// switchInlineQuery(id, ["users"]);
-			mainButton.hide();
 		});
+		return () => {
+			mainButton.onClick = () => {};
+		};
 	}, []);
 
 	useEffect(() => {
 		if (loading) {
-			mainButton.disable();
+			mainButton.showProgress();
 		} else {
-			mainButton.enable();
+			mainButton.hideProgress();
 		}
 	}, [loading]);
 

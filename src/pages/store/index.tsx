@@ -11,7 +11,7 @@ const PageStore = () => {
 		gifts: state.gifts.data,
 	}));
 
-	const { mainButton, onToggleButton } = useTelegram();
+	const { mainButton } = useTelegram();
 
 	mainButton.text = "Buy a gift";
 	return (
@@ -21,7 +21,7 @@ const PageStore = () => {
 				<h1>Buy and Send Gifts</h1>
 				<label>Unique gifts for everyone by Crypto Pay.</label>
 			</div>
-			<StoreMenu onClickActionButton={onToggleButton} gifts={gifts} />
+			<StoreMenu onClickActionButton={mainButton.show} gifts={gifts} />
 		</div>
 	);
 };
