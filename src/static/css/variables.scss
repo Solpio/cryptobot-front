@@ -8,12 +8,13 @@ $dark-theme: (
         --link-color: $accent_blue,
         --link-active: $accent_blue,
         --bg-primary: #1C1C1E,
+        --bg-secondary: $bg_secondary_dark,
         --bg-notification: rgba(0, 0, 0, 0.8),
         --bg-button-primary: $accent_blue,
         --bg-tab-bar: rgba(30, 30, 30, 0.75),
         --tab-menu-separator: $tab_menu_separator,
 
-
+        --border-color: rgba(255, 255, 255, 0.2),
         --tg-theme-header-bg-color: rgba(230, 10, 10, 0.75)
 );
 
@@ -25,10 +26,12 @@ $light-theme: (
         --link-color: $accent_blue,
         --link-active: $accent_blue,
         --bg-primary: $white,
+        --bg-secondary: $bg_secondary_light,
         --bg-notification: rgba(45, 45, 45, 0.8),
         --bg-button-primary: $accent_blue,
         --bg-tab-bar: rgba(241, 241, 242, 0.75),
         --tab-menu-separator: $tab_menu_separator,
+        --border-color: rgba(60, 60, 67, 0.36),
 
         --tg-theme-header-bg-color: rgba(230, 16, 16, 0.75)
 

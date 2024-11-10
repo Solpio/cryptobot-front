@@ -1,0 +1,14 @@
+.SearchWrapper {
+  padding-top: 10px;
+  padding-bottom: 8px;
+  //border-bottom: 1px solid var(--border-color);
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    margin-top: 8px;
+    left: 0;
+    height: 1px;
+    background-color: var(--border-color);
+  }
+}
