@@ -62,6 +62,7 @@ function App() {
 					<Route path={"leaderboard"} element={<PageLeaderboard />} />
 					<Route path={"gift/:id"} element={<BuyGiftPage />} />
 					<Route path={"profile/:id"} element={<PageProfile />} />
+					<Route path={"profile/me"} element={<PageProfile />} />
 					<Route
 						path={"purchased/:id/get"}
 						element={<PurchasedGift received={false} />}

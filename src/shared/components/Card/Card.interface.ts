@@ -12,4 +12,5 @@ export interface CardProps {
 	backgroundColor?: string;
 	size?: CardSizeEnum;
 	actionButton?: React.ReactNode;
+	playAnimation: boolean;
 }

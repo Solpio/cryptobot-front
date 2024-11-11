@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Gift } from "../dto/gift.ts";
-import { getHistoryGifts } from "../data";
+import { getHistoryGifts, HistoryGifts } from "../data";
 
 interface GiftsState {
-	data: Gift[];
+	data: HistoryGifts[];
 	loading: "pending" | "succeeded" | "failed";
 }
 
@@ -12,29 +11,29 @@ const initialState: GiftsState = {
 	loading: "succeeded",
 };
 
-export const fetchGifts = createAsyncThunk(
+export const fetchHistoryGifts = createAsyncThunk(
 	"getHistoryGifts",
 	async (userId: string) => {
 		return await getHistoryGifts(userId);
 	}
 );
 
-const giftsSlice = createSlice({
+const giftsHistorySlice = createSlice({
 	name: "profile",
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(fetchGifts.fulfilled, (state, action) => {
+		builder.addCase(fetchHistoryGifts.fulfilled, (state, action) => {
 			state.data = action.payload;
 			state.loading = "succeeded";
 		});
-		builder.addCase(fetchGifts.pending, (state) => {
+		builder.addCase(fetchHistoryGifts.pending, (state) => {
 			state.loading = "pending";
 		});
-		builder.addCase(fetchGifts.rejected, (state) => {
+		builder.addCase(fetchHistoryGifts.rejected, (state) => {
 			state.loading = "failed";
 		});
 	},
 });
 
-export default giftsSlice.reducer;
+export default giftsHistorySlice.reducer;

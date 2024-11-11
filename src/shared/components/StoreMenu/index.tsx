@@ -19,6 +19,7 @@ const StoreMenu = ({ gifts, onClickActionButton }: StoreMenuProps) => {
 				<Card
 					title={gift.name}
 					animationData={JSON.stringify(gift.lottie)}
+					playAnimation
 					backgroundColor={
 						colorScheme === "dark" ? gift.backgroundDark : gift.backgroundLight
 					}
