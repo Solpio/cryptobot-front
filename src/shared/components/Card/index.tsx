@@ -9,6 +9,7 @@ const Card = ({
 	actionButton,
 	backgroundColor,
 	animationData,
+	playAnimation,
 }: CardProps) => {
 	const options = {
 		animationData: JSON.parse(animationData),
@@ -21,7 +22,9 @@ const Card = ({
 		play();
 	};
 	goToAndStop(0, true);
-	play();
+	if (playAnimation) {
+		play();
+	}
 
 	if (size === CardSizeEnum.large) {
 		return (

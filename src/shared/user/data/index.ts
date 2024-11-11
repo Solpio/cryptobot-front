@@ -8,10 +8,18 @@ export interface IRegisterUserBody {
 	lastName?: string;
 }
 
+export interface User {
+	id: string;
+	tgId: number;
+	firstName: string;
+	username?: string;
+	languageCode?: string;
+	lastName?: string;
+	userPhoto?: string;
+}
+
 export const register = (body: IRegisterUserBody) =>
 	post<unknown>("user/register", { body });
 
-export const getMe = () => get<unknown>("user/me", {});
-export const getUser = (id: string) => get<unknown>(`user/${id}`, {});
-export const getHistory = (id: string) =>
-	get<unknown>(`user/${id}/history`, {});
+export const getMe = () => get<User>("user/me", {});
+export const getUser = (id: string) => get<User>(`user/${id}`, {});

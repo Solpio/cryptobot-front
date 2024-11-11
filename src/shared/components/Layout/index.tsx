@@ -52,7 +52,7 @@ const Layout = () => {
 						/>
 					</NavLink>
 					<NavLink
-						to="profile"
+						to="profile/me"
 						className={({ isActive }) => (isActive ? "link-active" : "")}
 					>
 						<TabBarItem

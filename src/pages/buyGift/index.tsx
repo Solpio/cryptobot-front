@@ -55,6 +55,7 @@ const BuyGiftPage = () => {
 					}
 					animationData={JSON.stringify(gift.lottie)}
 					size={CardSizeEnum.large}
+					playAnimation
 				/>
 			)}
 		</div>
