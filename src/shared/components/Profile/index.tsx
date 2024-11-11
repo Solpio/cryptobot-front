@@ -2,8 +2,6 @@ import ProfileHeader from "./ProfileHeader";
 import { GiftDto } from "../../gifts/dto/gift.dto.ts";
 import GiftMenu from "../GiftMenu";
 import { useAppSelector } from "../../../redux/helpers.ts";
-import { i } from "vite/dist/node/types.d-aGj9QkWt";
-import { it } from "node:test";
 import { HistoryGifts } from "../../profile/data";
 
 interface ProfileProps {
