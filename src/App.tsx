@@ -2,7 +2,7 @@ import "./static/css/main.scss";
 
 import { useTelegram } from "./telegramAPI/hooks/useTelegram.ts";
 import { useEffect } from "react";
-import { Route, Routes, useNavigate, useParams } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Layout from "./shared/components/Layout";
 import PageStore from "./pages/store";
 import PageProfile from "./pages/profile";
@@ -22,8 +22,10 @@ function App() {
 		loading: selector.user.loading,
 	}));
 	const navigate = useNavigate();
-	const { purchaseId, sending } = useParams();
-	console.log("debug:", purchaseId, sending);
+	const searchParams = new URLSearchParams(location.search);
+	const purchaseId = searchParams.get("purchaseId");
+	const sending = searchParams.get("sending");
+	console.log("debug", purchaseId, sending);
 	useEffect(() => {
 		tg.ready();
 	}, [tg]);
