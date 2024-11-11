@@ -14,6 +14,7 @@ interface GiftMenuProps {
 
 const GiftMenu = ({ gifts, hasSend }: GiftMenuProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [id, setId] = useState<string>("");
 
 	const { mainButton, switchInlineQuery } = useTelegram();
 
@@ -21,23 +22,33 @@ const GiftMenu = ({ gifts, hasSend }: GiftMenuProps) => {
 		setIsOpen(false);
 	};
 
-	const handleOnOpen = () => {
+	const handleOnOpen = (id: string) => {
+		setId(id);
 		setIsOpen(true);
 	};
 
-	mainButton.onClick(() => switchInlineQuery(["users"]));
+	const handleMainButtonOnClick = () => {
+		switchInlineQuery(id, ["users"]);
+	};
+
 	useEffect(() => {
 		if (isOpen) {
 			mainButton.text = "Send gift to a user";
 			mainButton.show();
 		} else {
-			mainButton.onClick = () => {};
 			mainButton.hide();
 		}
-		return () => {
-			mainButton.onClick = () => {};
-		};
 	}, [isOpen]);
+
+	useEffect(() => {
+		console.log(id);
+		if (id) {
+			mainButton.onClick(handleMainButtonOnClick);
+		}
+		return () => {
+			mainButton.offClick(handleMainButtonOnClick);
+		};
+	}, [id]);
 
 	return (
 		<div className={styles.GiftMenuContainer}>
@@ -50,7 +61,15 @@ const GiftMenu = ({ gifts, hasSend }: GiftMenuProps) => {
 					key={`${gift.id}${id}`}
 					playAnimation={false}
 					actionButton={
-						hasSend ? <Button onClick={handleOnOpen}>Send</Button> : null
+						hasSend ? (
+							<Button
+								onClick={() => {
+									gift.purchaseId && handleOnOpen(gift.purchaseId);
+								}}
+							>
+								Send
+							</Button>
+						) : null
 					}
 				/>
 			))}

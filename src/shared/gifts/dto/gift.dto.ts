@@ -7,4 +7,5 @@ export interface GiftDto {
 	backgroundLight: string;
 	backgroundDark: string;
 	lottie: unknown;
+	purchaseId?: string;
 }
