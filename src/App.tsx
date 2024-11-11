@@ -2,7 +2,7 @@ import "./static/css/main.scss";
 
 import { useTelegram } from "./telegramAPI/hooks/useTelegram.ts";
 import { useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import Layout from "./shared/components/Layout";
 import PageStore from "./pages/store";
 import PageProfile from "./pages/profile";
@@ -13,16 +13,17 @@ import { useAppDispatch, useAppSelector } from "./redux/helpers.ts";
 import { fetchGifts } from "./shared/gifts/redux/gifts.slice.ts";
 import { makeRegister } from "./shared/user/redux/user.slice.ts";
 import { IRegisterUserBody } from "./shared/user/data";
-import { queryToObject } from "./shared/helpers/queryToObject.ts";
 import PurchasedGift from "./pages/purchasedGift";
 
 function App() {
-	const { tg, theme, user, queryId } = useTelegram();
+	const { tg, user } = useTelegram();
 	const dispatch = useAppDispatch();
 	const { loading } = useAppSelector((selector) => ({
 		loading: selector.user.loading,
 	}));
 	const navigate = useNavigate();
+	const { purchaseId, sending } = useParams();
+	console.log("debug:", purchaseId, sending);
 	useEffect(() => {
 		tg.ready();
 	}, [tg]);
@@ -41,19 +42,14 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		console.log("debug:", queryId.start_param);
-		if (loading === "succeeded" && queryId.start_param) {
-			const params = queryToObject(queryId.start_param);
-			if (params.purchaseId) {
-				if (params.sending) {
-					navigate(`/purchased/${params.purchaseId}/get`);
-				}
-				navigate(`/purchased/${params.purchaseId}/view`);
+		if (loading === "succeeded" && purchaseId) {
+			if (sending) {
+				navigate(`/purchased/${purchaseId}/get`);
 			}
+			navigate(`/purchased/${purchaseId}/view`);
 		}
-	}, [loading, queryId.start_param]);
+	}, [loading]);
 
-	console.log(theme);
 	return (
 		<>
 			<Routes>
