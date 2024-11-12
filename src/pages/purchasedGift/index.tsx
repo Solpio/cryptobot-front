@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 
 interface PurchasedGift {
 	received: boolean;
+	text: string;
+	description: string;
 }
 
-const PurchasedGift = ({ received }: PurchasedGift) => {
+const PurchasedGift = ({ received, text }: PurchasedGift) => {
 	const { id } = useParams();
 	console.log(id, received, "debug");
 	useEffect(() => {
@@ -17,7 +19,7 @@ const PurchasedGift = ({ received }: PurchasedGift) => {
 				});
 		}
 	}, [received]);
-	return <div>Gift Purchased</div>;
+	return <div>{text}</div>;
 };
 
 export default PurchasedGift;
