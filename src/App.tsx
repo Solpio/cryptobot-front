@@ -9,11 +9,11 @@ import PageProfile from "./pages/profile";
 import PageGifts from "./pages/gifts";
 import PageLeaderboard from "./pages/leaderboard";
 import BuyGiftPage from "./pages/buyGift";
+import PurchasedGift from "./pages/purchasedGift";
 import { useAppDispatch, useAppSelector } from "./redux/helpers.ts";
 import { fetchGifts } from "./shared/gifts/redux/gifts.slice.ts";
 import { makeRegister } from "./shared/user/redux/user.slice.ts";
 import { IRegisterUserBody } from "./shared/user/data";
-import PurchasedGift from "./pages/purchasedGift";
 
 function App() {
 	const { tg, user } = useTelegram();
@@ -26,6 +26,7 @@ function App() {
 	const purchaseId = searchParams.get("purchaseId");
 	const sending = searchParams.get("sending");
 	console.log("debug", purchaseId, sending);
+	console.log(window.location);
 	useEffect(() => {
 		tg.ready();
 	}, [tg]);
