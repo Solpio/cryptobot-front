@@ -29,7 +29,7 @@ function App() {
 	let purchaseIdSending = "";
 	let purchaseIdView = "";
 	if (startParam) {
-		if (startParam.includes("purchaseidsenging")) {
+		if (startParam.includes("purchaseidsending")) {
 			purchaseIdSending = startParam.split("-")[1];
 		}
 
