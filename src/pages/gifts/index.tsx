@@ -41,7 +41,7 @@ const PageGifts = () => {
 		<div>
 			<div className={styles.PageDescription}>
 				<h1>Send Gifts in Telegram</h1>
-				<label>
+				<label className={styles.Label}>
 					Send gifts to users that can be stored <br /> in their app profile.
 				</label>
 			</div>

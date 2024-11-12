@@ -7,8 +7,9 @@ import StoreMenu from "../../shared/components/StoreMenu";
 import { useTelegram } from "../../telegramAPI/hooks/useTelegram.ts";
 
 const PageStore = () => {
-	const { gifts } = useAppSelector((state) => ({
+	const { gifts, loading } = useAppSelector((state) => ({
 		gifts: state.gifts.data,
+		loading: state.gifts.loading,
 	}));
 
 	const { mainButton } = useTelegram();
@@ -18,10 +19,16 @@ const PageStore = () => {
 		<div>
 			<div className={styles.PageDescription}>
 				<img className={styles.PageDescriptionIcon} src={giftSVG} alt="Users" />
-				<h1>Buy and Send Gifts</h1>
-				<label>Unique gifts for everyone by Crypto Pay.</label>
+				<h1 className={styles.Title}>Buy and Send Gifts</h1>
+				<label className={styles.Label}>
+					Unique gifts for everyone by Crypto Pay.
+				</label>
 			</div>
-			<StoreMenu onClickActionButton={mainButton.show} gifts={gifts} />
+			<StoreMenu
+				isLoading={loading === "pending"}
+				onClickActionButton={mainButton.show}
+				gifts={gifts}
+			/>
 		</div>
 	);
 };

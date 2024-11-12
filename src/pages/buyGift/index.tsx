@@ -50,6 +50,7 @@ const BuyGiftPage = () => {
 		<div>
 			{gift && (
 				<Card
+					hasOwnBackground
 					backgroundColor={
 						colorScheme === "dark" ? gift.backgroundDark : gift.backgroundLight
 					}

@@ -9,6 +9,7 @@ export const enum CardSizeEnum {
 export interface CardProps {
 	animationData: string;
 	title?: string;
+	hasOwnBackground: boolean;
 	backgroundColor?: string;
 	size?: CardSizeEnum;
 	actionButton?: React.ReactNode;
