@@ -12,6 +12,7 @@ export interface HistoryGifts {
 }
 
 export interface ProfileGifts {
+	id: string;
 	amount: string;
 	currencyType: string;
 	currencyAsset?: string;

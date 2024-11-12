@@ -30,7 +30,7 @@ const PageGifts = () => {
 			const result = gifts.find((gift) => item.giftId === gift.id);
 
 			if (result) {
-				return [...acc, { ...result, purchaseId: item.giftId }];
+				return [...acc, { ...result, purchaseId: item.id }];
 			}
 			return acc;
 		},
