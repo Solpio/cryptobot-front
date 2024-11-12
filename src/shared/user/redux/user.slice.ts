@@ -4,11 +4,13 @@ import { getMe, getUser, IRegisterUserBody, register, User } from "../data";
 interface UserState {
 	registrationData: unknown;
 	userData?: User;
+	redirectedToGift: boolean;
 	loading: "pending" | "succeeded" | "failed";
 }
 
 const initialState: UserState = {
 	registrationData: [],
+	redirectedToGift: false,
 	loading: "succeeded",
 };
 
@@ -33,7 +35,11 @@ export const getUserProfile = createAsyncThunk(
 const userSlice = createSlice({
 	name: "user",
 	initialState,
-	reducers: {},
+	reducers: {
+		redirectedToGift: (state, action) => {
+			state.redirectedToGift = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(makeRegister.fulfilled, (state, action) => {
 			state.registrationData = action.payload;
@@ -69,5 +75,7 @@ const userSlice = createSlice({
 		});
 	},
 });
+
+export const { redirectedToGift } = userSlice.actions;
 
 export default userSlice.reducer;

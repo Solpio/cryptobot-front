@@ -12,14 +12,18 @@ import BuyGiftPage from "./pages/buyGift";
 import PurchasedGift from "./pages/purchasedGift";
 import { useAppDispatch, useAppSelector } from "./redux/helpers.ts";
 import { fetchGifts } from "./shared/gifts/redux/gifts.slice.ts";
-import { makeRegister } from "./shared/user/redux/user.slice.ts";
+import {
+	makeRegister,
+	redirectedToGift,
+} from "./shared/user/redux/user.slice.ts";
 import { IRegisterUserBody } from "./shared/user/data";
 
 function App() {
 	const { tg, user, startParam } = useTelegram();
 	const dispatch = useAppDispatch();
-	const { loading } = useAppSelector((selector) => ({
+	const { loading, redirected } = useAppSelector((selector) => ({
 		loading: selector.user.loading,
+		redirected: selector.user.redirectedToGift,
 	}));
 	const navigate = useNavigate();
 	let purchaseIdSending = "";
@@ -53,10 +57,12 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (loading === "succeeded" && purchaseIdSending) {
+		if (loading === "succeeded" && purchaseIdSending && !redirected) {
+			dispatch(redirectedToGift(true));
 			navigate(`/purchased/${purchaseIdSending}/get`);
 		}
-		if (loading === "succeeded" && purchaseIdView) {
+		if (loading === "succeeded" && purchaseIdView && !redirected) {
+			dispatch(redirectedToGift(true));
 			navigate(`/purchased/${purchaseIdView}/view`);
 		}
 	}, [loading]);
