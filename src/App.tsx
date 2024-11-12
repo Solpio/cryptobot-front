@@ -16,16 +16,24 @@ import { makeRegister } from "./shared/user/redux/user.slice.ts";
 import { IRegisterUserBody } from "./shared/user/data";
 
 function App() {
-	const { tg, user } = useTelegram();
+	const { tg, user, startParam } = useTelegram();
 	const dispatch = useAppDispatch();
 	const { loading } = useAppSelector((selector) => ({
 		loading: selector.user.loading,
 	}));
 	const navigate = useNavigate();
-	const searchParams = new URLSearchParams(location.search);
-	const purchaseId = searchParams.get("purchaseId");
-	const sending = searchParams.get("sending");
-	console.log("debug", purchaseId, sending);
+	let purchaseIdSending = "";
+	let purchaseIdView = "";
+	if (startParam) {
+		if (startParam.includes("purchaseidsenging")) {
+			purchaseIdSending = startParam.split("-")[1];
+		}
+
+		if (startParam.includes("purchaseid")) {
+			purchaseIdView = startParam.split("-")[1];
+		}
+	}
+	console.log("debug", purchaseIdView, purchaseIdSending);
 	console.log(window.location);
 	useEffect(() => {
 		tg.ready();
@@ -45,11 +53,11 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (loading === "succeeded" && purchaseId) {
-			if (sending) {
-				navigate(`/purchased/${purchaseId}/get`);
-			}
-			navigate(`/purchased/${purchaseId}/view`);
+		if (loading === "succeeded" && purchaseIdSending) {
+			navigate(`/purchased/${purchaseIdSending}/get`);
+		}
+		if (loading === "succeeded" && purchaseIdView) {
+			navigate(`/purchased/${purchaseIdView}/view`);
 		}
 	}, [loading]);
 
