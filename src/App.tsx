@@ -60,8 +60,7 @@ function App() {
 		if (loading === "succeeded" && purchaseIdSending && !redirected) {
 			dispatch(redirectedToGift(true));
 			navigate(`/purchased/${purchaseIdSending}/get`);
-		}
-		if (loading === "succeeded" && purchaseIdView && !redirected) {
+		} else if (loading === "succeeded" && purchaseIdView && !redirected) {
 			dispatch(redirectedToGift(true));
 			navigate(`/purchased/${purchaseIdView}/view`);
 		}
