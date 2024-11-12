@@ -11,5 +11,9 @@ export interface HistoryGifts {
 	};
 }
 
-export const getHistoryGifts = (userId: string) =>
+//метод на recent activity
+export const getRecentActivityGifts = (userId: string) =>
 	get<HistoryGifts[]>(`/user/${userId}/history`, {});
+
+export const getProfileGifts = (userId: string) =>
+	get<HistoryGifts[]>(`/purchase/user/${userId}`, {});

@@ -5,15 +5,18 @@ import {
 	getUserProfile,
 } from "../../shared/user/redux/user.slice.ts";
 import { useEffect } from "react";
-import { fetchHistoryGifts } from "../../shared/profile/redux/giftsHistory.slice.ts";
-import Profile from "../../shared/components/Profile";
+import {
+	recentActivityUserGifts,
+	userGifts,
+} from "../../shared/profile/redux/giftsHistory.slice.ts";
 
 const PageProfile = () => {
 	const { id } = useParams();
 
 	const { userProfile, profileGifts } = useAppSelector((state) => ({
 		userProfile: state.user.userData,
-		profileGifts: state.profileGifts.data,
+		recentlyActions: state.profileGifts.recentActivityProfile,
+		profileGifts: state.profileGifts.ownGits,
 	}));
 
 	const dispatch = useAppDispatch();
@@ -28,21 +31,24 @@ const PageProfile = () => {
 
 	useEffect(() => {
 		if (userProfile) {
-			dispatch(fetchHistoryGifts(userProfile.id));
+			dispatch(recentActivityUserGifts(userProfile.id));
+			dispatch(userGifts(userProfile.id));
 		}
 	}, [userProfile]);
 
+	console.log(profileGifts);
+
 	return (
 		<div>
-			{profileGifts && (
-				<Profile
-					leaderboardPosition={3}
-					name={`${userProfile?.firstName} ${userProfile?.lastName} `}
-					showSettings={false}
-					giftsCount={4}
-					userGifts={profileGifts}
-				/>
-			)}
+			{/*{profileGifts.length && (*/}
+			{/*	<Profile*/}
+			{/*		leaderboardPosition={3}*/}
+			{/*		name={`${userProfile?.firstName} ${userProfile?.lastName} `}*/}
+			{/*		showSettings={false}*/}
+			{/*		giftsCount={4}*/}
+			{/*		userGifts={profileGifts}*/}
+			{/*	/>*/}
+			{/*)}*/}
 		</div>
 	);
 };

@@ -3,7 +3,7 @@ import GiftMenu from "../../shared/components/GiftMenu";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers.ts";
 import { useEffect } from "react";
 import { getMyProfile } from "../../shared/user/redux/user.slice.ts";
-import { fetchHistoryGifts } from "../../shared/profile/redux/giftsHistory.slice.ts";
+import { recentActivityUserGifts } from "../../shared/profile/redux/giftsHistory.slice.ts";
 import { GiftDto } from "../../shared/gifts/dto/gift.dto.ts";
 
 const PageGifts = () => {
@@ -21,7 +21,7 @@ const PageGifts = () => {
 
 	useEffect(() => {
 		if (userProfile) {
-			dispatch(fetchHistoryGifts(userProfile.id));
+			dispatch(recentActivityUserGifts(userProfile.id));
 		}
 	}, [userProfile]);
 

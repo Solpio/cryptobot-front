@@ -41,7 +41,6 @@ const GiftMenu = ({ gifts, hasSend }: GiftMenuProps) => {
 	}, [isOpen]);
 
 	useEffect(() => {
-		console.log(id);
 		if (id) {
 			mainButton.onClick(handleMainButtonOnClick);
 		}
