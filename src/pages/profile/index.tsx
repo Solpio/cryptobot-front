@@ -8,7 +8,8 @@ import { useEffect } from "react";
 import {
 	recentActivityUserGifts,
 	userGifts,
-} from "../../shared/profile/redux/giftsHistory.slice.ts";
+} from "../../shared/profile/redux/profile.slice.ts";
+import Profile from "../../shared/components/Profile";
 
 const PageProfile = () => {
 	const { id } = useParams();
@@ -36,19 +37,17 @@ const PageProfile = () => {
 		}
 	}, [userProfile]);
 
-	console.log(profileGifts);
-
 	return (
 		<div>
-			{/*{profileGifts.length && (*/}
-			{/*	<Profile*/}
-			{/*		leaderboardPosition={3}*/}
-			{/*		name={`${userProfile?.firstName} ${userProfile?.lastName} `}*/}
-			{/*		showSettings={false}*/}
-			{/*		giftsCount={4}*/}
-			{/*		userGifts={profileGifts}*/}
-			{/*	/>*/}
-			{/*)}*/}
+			{profileGifts.length && (
+				<Profile
+					leaderboardPosition={3}
+					name={`${userProfile?.firstName} ${userProfile?.lastName} `}
+					showSettings={false}
+					giftsCount={4}
+					userGifts={profileGifts}
+				/>
+			)}
 		</div>
 	);
 };

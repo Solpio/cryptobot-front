@@ -2,7 +2,7 @@ import ProfileHeader from "./ProfileHeader";
 import { GiftDto } from "../../gifts/dto/gift.dto.ts";
 import GiftMenu from "../GiftMenu";
 import { useAppSelector } from "../../../redux/helpers.ts";
-import { HistoryGifts } from "../../profile/data";
+import { ProfileGifts } from "../../profile/data";
 
 interface ProfileProps {
 	name: string;
@@ -11,7 +11,7 @@ interface ProfileProps {
 	showSettings: boolean;
 	photoUrl?: string;
 
-	userGifts: HistoryGifts[];
+	userGifts: ProfileGifts[];
 }
 
 const Profile = ({
@@ -25,11 +25,9 @@ const Profile = ({
 	const { gifts } = useAppSelector((state) => ({
 		gifts: state.gifts.data,
 	}));
-	console.log(userGifts);
-	console.log(gifts);
 	const filledLottieGifts: GiftDto[] = userGifts.reduce(
 		(acc: GiftDto[], item) => {
-			const result = gifts.find((gift) => item.purchase.giftId === gift.id);
+			const result = gifts.find((gift) => item.giftId === gift.id);
 			if (result) {
 				return [...acc, result];
 			}
@@ -37,7 +35,6 @@ const Profile = ({
 		},
 		[]
 	);
-	console.log(filledLottieGifts);
 	return (
 		<div>
 			<ProfileHeader

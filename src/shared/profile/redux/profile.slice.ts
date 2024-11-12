@@ -1,9 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getProfileGifts, getRecentActivityGifts, HistoryGifts } from "../data";
+import {
+	getProfileGifts,
+	getRecentActivityGifts,
+	HistoryGifts,
+	ProfileGifts,
+} from "../data";
 
 interface GiftsState {
 	recentActivityProfile: HistoryGifts[];
-	ownGits: unknown;
+	ownGits: ProfileGifts[];
 	loading: "pending" | "succeeded" | "failed";
 }
 
@@ -27,7 +32,7 @@ export const userGifts = createAsyncThunk(
 	}
 );
 
-const giftsHistorySlice = createSlice({
+const profileSlice = createSlice({
 	name: "profile",
 	initialState,
 	reducers: {},
@@ -56,4 +61,4 @@ const giftsHistorySlice = createSlice({
 	},
 });
 
-export default giftsHistorySlice.reducer;
+export default profileSlice.reducer;
