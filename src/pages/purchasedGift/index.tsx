@@ -8,9 +8,13 @@ interface PurchasedGift {
 
 const PurchasedGift = ({ received }: PurchasedGift) => {
 	const { purchaseId } = useParams();
+	console.log(purchaseId, received, "debug");
 	useEffect(() => {
 		if (!received) {
-			if (purchaseId) receivePurchasedGift(purchaseId);
+			if (purchaseId)
+				receivePurchasedGift(purchaseId).then((res) => {
+					console.log("PurchasedGift", res);
+				});
 		}
 	}, [received]);
 	return <div>Gift Purchased</div>;
