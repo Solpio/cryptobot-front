@@ -29,7 +29,7 @@ function App() {
 	let purchaseIdSending = "";
 	let purchaseIdView = "";
 	if (startParam) {
-		if (startParam.includes("purchaseidsenging")) {
+		if (startParam.includes("purchaseidsending")) {
 			purchaseIdSending = startParam.split("-")[1];
 		}
 
@@ -60,8 +60,7 @@ function App() {
 		if (loading === "succeeded" && purchaseIdSending && !redirected) {
 			dispatch(redirectedToGift(true));
 			navigate(`/purchased/${purchaseIdSending}/get`);
-		}
-		if (loading === "succeeded" && purchaseIdView && !redirected) {
+		} else if (loading === "succeeded" && purchaseIdView && !redirected) {
 			dispatch(redirectedToGift(true));
 			navigate(`/purchased/${purchaseIdView}/view`);
 		}
