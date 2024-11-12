@@ -79,11 +79,23 @@ function App() {
 					<Route path={"profile/me"} element={<PageProfile />} />
 					<Route
 						path={"purchased/:id/get"}
-						element={<PurchasedGift received={false} />}
+						element={
+							<PurchasedGift
+								text={"Gift Purchased"}
+								description={"The Delicious Cake gift was received"}
+								received={false}
+							/>
+						}
 					/>
 					<Route
 						path={"purchased/:id/view"}
-						element={<PurchasedGift received />}
+						element={
+							<PurchasedGift
+								text={"Gift Received"}
+								description={"You have received the gift."}
+								received
+							/>
+						}
 					/>
 				</Route>
 			</Routes>
