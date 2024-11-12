@@ -58,13 +58,11 @@ function App() {
 
 	useEffect(() => {
 		if (loading === "succeeded" && purchaseIdSending && !redirected) {
-			const purchaseId = purchaseIdSending;
 			dispatch(redirectedToGift(true));
-			navigate(`/purchased/${purchaseId}/get`);
+			navigate(`/purchased/${purchaseIdSending}/get`);
 		} else if (loading === "succeeded" && purchaseIdView && !redirected) {
-			const purchaseId = purchaseIdView;
 			dispatch(redirectedToGift(true));
-			navigate(`/purchased/${purchaseId}/view`);
+			navigate(`/purchased/${purchaseIdView}/view`);
 		}
 	}, [loading]);
 

@@ -7,12 +7,12 @@ interface PurchasedGift {
 }
 
 const PurchasedGift = ({ received }: PurchasedGift) => {
-	const { purchaseId } = useParams();
-	console.log(purchaseId, received, "debug");
+	const { id } = useParams();
+	console.log(id, received, "debug");
 	useEffect(() => {
 		if (!received) {
-			if (purchaseId)
-				receivePurchasedGift(purchaseId).then((res) => {
+			if (id)
+				receivePurchasedGift(id).then((res) => {
 					console.log("PurchasedGift", res);
 				});
 		}
