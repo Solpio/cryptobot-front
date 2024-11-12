@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import giftsReducer from "../shared/gifts/redux/gifts.slice.ts";
 import LeaderboardReducer from "../shared/leaderboard/redux/leaderboard.slice.ts";
 import userReducer from "../shared/user/redux/user.slice.ts";
-import giftHistoryReducer from "../shared/profile/redux/giftsHistory.slice.ts";
+import giftHistoryReducer from "../shared/profile/redux/profile.slice.ts";
 
 export const store = configureStore({
 	reducer: {

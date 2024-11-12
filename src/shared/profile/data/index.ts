@@ -11,9 +11,21 @@ export interface HistoryGifts {
 	};
 }
 
+export interface ProfileGifts {
+	amount: string;
+	currencyType: string;
+	currencyAsset?: string;
+	currencyFiat?: string;
+	recipientTgId?: number;
+	status: string;
+	userId: string;
+	giftId: string;
+	user: User;
+}
+
 //метод на recent activity
 export const getRecentActivityGifts = (userId: string) =>
 	get<HistoryGifts[]>(`/user/${userId}/history`, {});
 
 export const getProfileGifts = (userId: string) =>
-	get<HistoryGifts[]>(`/purchase/user/${userId}`, {});
+	get<ProfileGifts[]>(`/purchase/user/${userId}`, {});
