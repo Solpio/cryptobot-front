@@ -1,15 +1,13 @@
 import styles from "./GiftsPage.module.scss";
-import GiftMenu from "../../shared/components/GiftMenu";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers.ts";
 import { useEffect } from "react";
 import { getMyProfile } from "../../shared/user/redux/user.slice.ts";
-import { fetchHistoryGifts } from "../../shared/profile/redux/giftsHistory.slice.ts";
-import { GiftDto } from "../../shared/gifts/dto/gift.dto.ts";
+import { recentActivityUserGifts } from "../../shared/profile/redux/giftsHistory.slice.ts";
 
 const PageGifts = () => {
-	const { userProfile, profileGifts, gifts } = useAppSelector((state) => ({
+	const { userProfile } = useAppSelector((state) => ({
 		userProfile: state.user.userData,
-		profileGifts: state.profileGifts.data,
+		profileGifts: state.profileGifts.ownGits,
 		gifts: state.gifts.data,
 	}));
 
@@ -21,21 +19,21 @@ const PageGifts = () => {
 
 	useEffect(() => {
 		if (userProfile) {
-			dispatch(fetchHistoryGifts(userProfile.id));
+			dispatch(recentActivityUserGifts(userProfile.id));
 		}
 	}, [userProfile]);
 
-	const filledLottieGifts: GiftDto[] = profileGifts.reduce(
-		(acc: GiftDto[], item) => {
-			const result = gifts.find((gift) => item.purchase.giftId === gift.id);
-
-			if (result) {
-				return [...acc, { ...result, purchaseId: item.purchase.giftId }];
-			}
-			return acc;
-		},
-		[]
-	);
+	// const filledLottieGifts: GiftDto[] = profileGifts.reduce(
+	// 	(acc: GiftDto[], item) => {
+	// 		const result = gifts.find((gift) => item.purchase.giftId === gift.id);
+	//
+	// 		if (result) {
+	// 			return [...acc, { ...result, purchaseId: item.purchase.giftId }];
+	// 		}
+	// 		return acc;
+	// 	},
+	// 	[]
+	// );
 
 	return (
 		<div>
@@ -45,7 +43,7 @@ const PageGifts = () => {
 					Send gifts to users that can be stored <br /> in their app profile.
 				</label>
 			</div>
-			{filledLottieGifts && <GiftMenu hasSend gifts={filledLottieGifts} />}
+			{/*{filledLottieGifts && <GiftMenu hasSend gifts={filledLottieGifts} />}*/}
 		</div>
 	);
 };
