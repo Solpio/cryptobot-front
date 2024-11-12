@@ -53,10 +53,10 @@ const GiftMenu = ({ gifts, hasSend }: GiftMenuProps) => {
 		<div className={styles.GiftMenuContainer}>
 			{gifts.map((gift, id) => (
 				<Card
+					hasOwnBackground={false}
 					title={gift.name}
 					size={CardSizeEnum.small}
 					animationData={JSON.stringify(gift.lottie)}
-					backgroundColor={"#2C2C2E"}
 					key={`${gift.id}${id}`}
 					playAnimation={false}
 					actionButton={

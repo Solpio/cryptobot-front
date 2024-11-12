@@ -2,6 +2,11 @@
 .Card {
   border-radius: 12px;
   width: 100%;
+
+}
+
+.noBackground {
+  background-color: var(--bg-card);
 }
 
 .CardWrapper {
@@ -9,10 +14,33 @@
   flex-direction: column;
   align-items: center;
 
-  background-image: url("../../../static/icons/tg_pattern_light.svg");
   width: inherit;
   height: inherit;
 
+}
+
+
+.CardWrapperMedium {
+  padding-top: 34px;
+  background-image: url("../../../static/icons/tg_pattern_light.svg");
+  padding-bottom: 16px;
+}
+
+.CardWrapperSmall {
+  padding-top: 8px;
+  padding-bottom: 12px;
+}
+
+.MediumTitle {
+ padding-top: 4px;
+  padding-bottom: 12px;
+}
+
+.SmallTitle {
+  padding-bottom: 4px;
+  font-size: 1.2rem;
+  color: var(--label-secondary);
+  font-weight: 400;
 }
 
 .Icon {
@@ -23,6 +51,7 @@
 .IconMedium {
   width: 117px;
   height: 117px;
+  padding-bottom: 8px;
 }
 
 .IconLarge {

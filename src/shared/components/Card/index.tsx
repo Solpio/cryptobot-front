@@ -10,6 +10,7 @@ const Card = ({
 	backgroundColor,
 	animationData,
 	playAnimation,
+	hasOwnBackground,
 }: CardProps) => {
 	const options = {
 		animationData: JSON.parse(animationData),
@@ -46,12 +47,24 @@ const Card = ({
 	return (
 		<div
 			onClick={handleOnClick}
-			className={styles.Card}
+			className={classNames(
+				styles.Card,
+				!hasOwnBackground && styles.noBackground
+			)}
 			style={{
 				background: backgroundColor,
 			}}
 		>
-			<div className={styles.CardWrapper}>
+			<div
+				className={classNames(
+					styles.CardWrapper,
+					size === CardSizeEnum.medium && styles.CardWrapperMedium,
+					size === CardSizeEnum.small && styles.CardWrapperSmall
+				)}
+			>
+				{size === CardSizeEnum.small && (
+					<h3 className={styles.SmallTitle}>{title}</h3>
+				)}
 				<div
 					className={classNames(
 						styles.Icon,
@@ -60,8 +73,10 @@ const Card = ({
 				>
 					{View}
 				</div>
-				<h2>{title}</h2>
-				{actionButton}
+				{size === CardSizeEnum.medium && (
+					<h2 className={styles.MediumTitle}>{title}</h2>
+				)}
+				<div>{actionButton}</div>
 			</div>
 		</div>
 	);

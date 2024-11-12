@@ -3,8 +3,16 @@
   flex-direction: column;
   align-items: center;
 
-  padding: 24px 0 12px 0;
+  padding: 24px 0 16px 0;
   text-align: center;
+}
+
+.Title {
+  padding-top: 16px;
+}
+
+.Label {
+  padding-top: 8px;
 }
 
 .PageDescriptionIcon {
